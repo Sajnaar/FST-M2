@@ -1,0 +1,10 @@
+--Drop tables
+DROP TABLE episode IV;
+
+--For Episode IV
+CREATE TABLE episode IV (name STRING, line STRING)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' TBLPROPERTIES ("skip.header.line.count"="2");
+LOAD DATA LOCAL INPATH '/root/inputs/episode IV_dialogues.txt' INTO TABLE episode IV;
+INSERT OVERWRITE LOCAL DIRECTORY /root/HiveOutput2'
+
+SELECT COUNT(*) FROM episode IV WHERE line LIKE '%Luke%';
